@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MXK5TBMG');</script>
-<!-- End Google Tag Manager -->
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-11MT6RBZ41"></script>
 <script>
@@ -17,6 +10,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   gtag('config', 'G-11MT6RBZ41');
 </script>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXK5TBMG');</script>
+<!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ARGENT — Fine Silver Jewellery</title>
@@ -42,10 +42,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     html { scroll-behavior: smooth; }
 
     body {
-      <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXK5TBMG"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
       background: var(--bg);
       color: var(--text);
       font-family: var(--font-sans);
@@ -473,7 +469,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .add-cart-btn {
       flex: 1;
       padding: 14px;
-      background: var(--silver-hi);
+      background: var(--bg2);
+      color: var(--silver-hi);
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      border: 1px solid var(--border); cursor: pointer;
+      transition: all 0.3s;
+    }
+    .add-cart-btn:hover { border-color: var(--silver); background: rgba(200,205,214,0.07); }
+    .buy-now-btn {
+      flex: 1;
+      padding: 14px;
+      background: var(--gold);
       color: #000;
       font-family: var(--font-sans);
       font-size: 11px;
@@ -481,8 +490,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       text-transform: uppercase;
       border: none; cursor: pointer;
       transition: background 0.3s;
+      font-weight: 400;
     }
-    .add-cart-btn:hover { background: var(--gold); }
+    .buy-now-btn:hover { background: var(--silver-hi); }
     .wishlist-btn {
       width: 48px; height: 48px;
       background: none;
@@ -635,6 +645,110 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .copyright { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
     .payment-icons { display: flex; gap: 12px; font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
 
+    /* ── PRODUCT CARD BUY BTN ── */
+    .card-actions {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+    .card-add-btn, .card-buy-btn {
+      padding: 13px 10px;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: none; cursor: pointer;
+      transition: all 0.3s;
+    }
+    .card-add-btn {
+      background: var(--bg3); color: var(--silver);
+      border-right: 1px solid var(--border);
+    }
+    .card-add-btn:hover { background: rgba(200,205,214,0.08); color: var(--silver-hi); }
+    .card-buy-btn { background: var(--gold); color: #000; font-weight: 400; }
+    .card-buy-btn:hover { background: var(--silver-hi); }
+
+    /* ── CHECKOUT MODAL ── */
+    .checkout-overlay {
+      display: none; position: fixed; inset: 0; z-index: 400;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(12px);
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .checkout-overlay.active { display: flex; animation: fadeIn 0.25s ease; }
+    .checkout-modal {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      width: 100%; max-width: 560px;
+      max-height: 90vh; overflow-y: auto;
+      animation: slideUp 0.3s ease;
+      position: relative;
+    }
+    .co-header {
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .co-title { font-family: var(--font-serif); font-size: 26px; font-weight: 300; color: var(--silver-hi); }
+    .co-close {
+      background: none; border: none; color: var(--muted);
+      font-size: 22px; cursor: pointer; transition: color 0.3s;
+    }
+    .co-close:hover { color: var(--silver-hi); }
+    .co-body { padding: 28px 32px; display: flex; flex-direction: column; gap: 20px; }
+    .co-item-summary {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+    }
+    .co-item-emoji { font-size: 40px; }
+    .co-item-name { font-family: var(--font-serif); font-size: 18px; color: var(--silver-hi); }
+    .co-item-sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .co-item-price { font-family: var(--font-serif); font-size: 20px; color: var(--gold); margin-left: auto; }
+    .co-section-label { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--silver); margin-bottom: 12px; }
+    .co-input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .co-input-full { grid-column: 1/-1; }
+    .co-input {
+      width: 100%; padding: 12px 14px;
+      background: var(--bg2); border: 1px solid var(--border);
+      color: var(--silver); font-family: var(--font-sans); font-size: 12px;
+      letter-spacing: 0.08em; outline: none; transition: border-color 0.3s;
+    }
+    .co-input:focus { border-color: var(--silver); }
+    .co-input::placeholder { color: var(--muted); }
+    .co-divider { height: 1px; background: var(--border); }
+    .co-total-row { display: flex; justify-content: space-between; align-items: center; }
+    .co-total-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+    .co-total-amt { font-family: var(--font-serif); font-size: 26px; color: var(--silver-hi); }
+    .co-pay-btn {
+      width: 100%; padding: 18px;
+      background: var(--gold); color: #000;
+      font-family: var(--font-sans); font-size: 11px;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      border: none; cursor: pointer; transition: background 0.3s; font-weight: 400;
+    }
+    .co-pay-btn:hover { background: var(--silver-hi); }
+    .co-secure { text-align: center; font-size: 10px; letter-spacing: 0.15em; color: var(--muted); margin-top: 8px; }
+    .co-payment-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+    .co-pay-opt {
+      padding: 10px 16px;
+      background: var(--bg2); border: 1px solid var(--border);
+      color: var(--muted); font-size: 11px; letter-spacing: 0.1em;
+      cursor: pointer; transition: all 0.25s;
+    }
+    .co-pay-opt.active, .co-pay-opt:hover { border-color: var(--gold); color: var(--gold); }
+    .success-screen {
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      padding: 60px 32px; text-align: center; gap: 16px;
+    }
+    .success-screen.show { display: flex; }
+    .success-icon { font-size: 60px; }
+    .success-title { font-family: var(--font-serif); font-size: 28px; color: var(--silver-hi); }
+    .success-sub { font-size: 12px; color: var(--muted); letter-spacing: 0.1em; }
+    .success-order { font-size: 11px; color: var(--gold); letter-spacing: 0.2em; }
+
     /* ── TOAST ── */
     .toast {
       position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(80px);
@@ -674,6 +788,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </style>
 </head>
 <body>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MXK5TBMG');</script>
+<!-- End Google Tag Manager -->
 
 <!-- NAV -->
 <nav id="navbar">
@@ -850,14 +971,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div>
         <div class="qty-label">Quantity</div>
-        <div class="qty-row">
+        <div class="qty-row" style="margin-bottom:10px;">
           <div class="qty-ctrl">
             <button onclick="changeQty(-1)">−</button>
             <span id="qtyDisplay">1</span>
             <button onclick="changeQty(1)">+</button>
           </div>
-          <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
           <button class="wishlist-btn" title="Wishlist">♡</button>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+          <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+          <button class="buy-now-btn" onclick="buyNowFromModal()">Buy Now ✦</button>
         </div>
       </div>
       <div class="modal-divider"></div>
@@ -890,6 +1014,74 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <button class="checkout-btn" onclick="checkout()">Proceed to Checkout →</button>
     <div class="secure-note">🔒 Secure & Encrypted Payment</div>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="checkout-overlay" id="checkoutOverlay" onclick="closeCheckoutOutside(event)">
+  <div class="checkout-modal" id="checkoutModal">
+    <div id="checkoutForm">
+      <div class="co-header">
+        <div class="co-title">Checkout</div>
+        <button class="co-close" onclick="closeCheckout()">✕</button>
+      </div>
+      <div class="co-body">
+        <!-- Order Summary -->
+        <div id="coItemSummary"></div>
+
+        <div class="co-divider"></div>
+
+        <!-- Delivery -->
+        <div>
+          <div class="co-section-label">Delivery Details</div>
+          <div class="co-input-grid">
+            <input class="co-input" type="text" id="coName" placeholder="Full Name" />
+            <input class="co-input" type="tel" id="coPhone" placeholder="Phone Number" />
+            <input class="co-input co-input-full" type="email" id="coEmail" placeholder="Email Address" />
+            <input class="co-input co-input-full" type="text" id="coAddress" placeholder="Street Address" />
+            <input class="co-input" type="text" id="coCity" placeholder="City" />
+            <input class="co-input" type="text" id="coPincode" placeholder="Pincode" />
+          </div>
+        </div>
+
+        <div class="co-divider"></div>
+
+        <!-- Payment Method -->
+        <div>
+          <div class="co-section-label">Payment Method</div>
+          <div class="co-payment-opts">
+            <div class="co-pay-opt active" onclick="selectPayment(this, 'upi')">UPI</div>
+            <div class="co-pay-opt" onclick="selectPayment(this, 'card')">Credit / Debit Card</div>
+            <div class="co-pay-opt" onclick="selectPayment(this, 'netbanking')">Net Banking</div>
+            <div class="co-pay-opt" onclick="selectPayment(this, 'cod')">Cash on Delivery</div>
+          </div>
+        </div>
+
+        <div class="co-divider"></div>
+
+        <!-- Total -->
+        <div class="co-total-row">
+          <div>
+            <div class="co-total-label">Order Total</div>
+            <div style="font-size:10px; color:var(--muted); margin-top:4px; letter-spacing:0.1em;">Incl. GST + Free Shipping</div>
+          </div>
+          <div class="co-total-amt" id="coTotalAmt">₹0</div>
+        </div>
+
+        <button class="co-pay-btn" onclick="placeOrder()">Place Order & Pay →</button>
+        <div class="co-secure">🔒 256-bit SSL Secured &nbsp;·&nbsp; ✦ Hallmarked Guarantee</div>
+      </div>
+    </div>
+
+    <!-- Success Screen -->
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">✅</div>
+      <div class="success-title">Order Confirmed!</div>
+      <div class="success-sub">Your jewellery is being lovingly packed.</div>
+      <div class="success-order" id="successOrderId">Order #ARG-000000</div>
+      <p style="font-size:12px; color:var(--muted); margin-top:8px;">Estimated delivery: 5–7 business days</p>
+      <button class="co-pay-btn" style="margin-top:24px; width:220px;" onclick="closeCheckout()">Continue Shopping</button>
+    </div>
   </div>
 </div>
 
@@ -943,10 +1135,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           ${p.badge ? `<div class="product-badge badge-${p.badge}">${p.badge}</div>` : ''}
           <div class="product-emoji">${p.emoji}</div>
           <div class="quick-add">
-            <button class="quick-add-btn" onclick="event.stopPropagation(); openModal(${p.id})">Quick Add</button>
+            <button class="quick-add-btn" onclick="event.stopPropagation(); openModal(${p.id})">View Details</button>
           </div>
         </div>
-        <div class="product-info" onclick="openModal(${p.id})">
+        <div class="product-info" onclick="openModal(${p.id})" style="cursor:pointer;">
           <div class="product-name">${p.name}</div>
           <div class="product-material">${p.material}</div>
           <div class="product-price-row">
@@ -956,6 +1148,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="product-rating">★★★★★</div>
           </div>
+        </div>
+        <div class="card-actions">
+          <button class="card-add-btn" onclick="quickAddToCart(${p.id})">+ Cart</button>
+          <button class="card-buy-btn" onclick="buyNowDirect(${p.id})">Buy Now</button>
         </div>`;
       grid.appendChild(card);
     });
@@ -1034,7 +1230,83 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     showToast(`${currentProduct.name} added to cart ✦`);
   }
 
-  // ── CART ──
+  // ── BUY NOW ──
+  let checkoutItems = [];
+  let selectedPayment = 'upi';
+
+  function buyNowDirect(id) {
+    const product = products.find(p => p.id === id);
+    checkoutItems = [{ ...product, qty: 1, size: product.sizes[0] }];
+    openCheckout();
+  }
+
+  function buyNowFromModal() {
+    if (!currentProduct) return;
+    checkoutItems = [{ ...currentProduct, qty: currentQty, size: selectedSize }];
+    closeModal();
+    openCheckout();
+  }
+
+  function quickAddToCart(id) {
+    const product = products.find(p => p.id === id);
+    const existing = cart.find(i => i.id === product.id);
+    if (existing) { existing.qty += 1; }
+    else { cart.push({ ...product, qty: 1, size: product.sizes[0] }); }
+    updateCartUI();
+    showToast(`${product.name} added to cart ✦`);
+  }
+
+  function openCheckout() {
+    const total = checkoutItems.reduce((s, i) => s + i.price * i.qty, 0);
+    document.getElementById('coTotalAmt').textContent = '₹' + total.toLocaleString('en-IN');
+    const summaryEl = document.getElementById('coItemSummary');
+    summaryEl.innerHTML = checkoutItems.map(item => `
+      <div class="co-item-summary">
+        <div class="co-item-emoji">${item.emoji}</div>
+        <div>
+          <div class="co-item-name">${item.name}</div>
+          <div class="co-item-sub">Size: ${item.size || 'N/A'} · Qty: ${item.qty} · ${item.material}</div>
+        </div>
+        <div class="co-item-price">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
+      </div>`).join('');
+    document.getElementById('successScreen').classList.remove('show');
+    document.getElementById('checkoutForm').style.display = '';
+    document.getElementById('checkoutOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkoutOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+    checkoutItems = [];
+    selectedPayment = 'upi';
+    document.querySelectorAll('.co-pay-opt').forEach((el,i) => { el.classList.toggle('active', i===0); });
+  }
+
+  function closeCheckoutOutside(e) {
+    if (e.target === document.getElementById('checkoutOverlay')) closeCheckout();
+  }
+
+  function selectPayment(el, method) {
+    document.querySelectorAll('.co-pay-opt').forEach(o => o.classList.remove('active'));
+    el.classList.add('active');
+    selectedPayment = method;
+  }
+
+  function placeOrder() {
+    const name = document.getElementById('coName').value.trim();
+    const phone = document.getElementById('coPhone').value.trim();
+    const address = document.getElementById('coAddress').value.trim();
+    if (!name || !phone || !address) { showToast('Please fill in delivery details ✦'); return; }
+    document.getElementById('checkoutForm').style.display = 'none';
+    document.getElementById('successScreen').classList.add('show');
+    const orderId = 'ARG-' + Math.floor(100000 + Math.random() * 900000);
+    document.getElementById('successOrderId').textContent = 'Order #' + orderId;
+    // Clear cart if items were from cart
+    cart = [];
+    updateCartUI();
+    showToast('Order placed successfully! ✦');
+  }
   function toggleCart() {
     const drawer = document.getElementById('cartDrawer');
     const backdrop = document.getElementById('drawerBackdrop');
@@ -1081,8 +1353,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   function checkout() {
     if (cart.length === 0) { showToast('Your cart is empty ✦'); return; }
-    showToast('Redirecting to checkout… ✦');
-    setTimeout(() => { alert('Checkout flow would integrate with your payment gateway here!'); }, 1000);
+    checkoutItems = [...cart];
+    toggleCart();
+    setTimeout(() => openCheckout(), 300);
   }
 
   // ── NEWSLETTER ──
